@@ -32,4 +32,8 @@ target_link_libraries(demo_hook
     pthread syscall_intercept
 )
 
+target_link_libraries(test
+    pthread syscall_intercept
+)
+
 target_include_directories(demo_hook PUBLIC ${HOOK_HEAD_LIST})

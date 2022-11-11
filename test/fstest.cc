@@ -14,6 +14,8 @@
 
 #include <time.h>
 
+#include <libsyscall_intercept_hook_point.h>
+
 
 int main(int argc, char* argv[]) {
 
@@ -39,6 +41,12 @@ int main(int argc, char* argv[]) {
     int fd;
     DIR * dirstream = NULL;
     struct stat dirstat;
+
+    if(syscall_hook_in_process_allowed()) {
+        printf("syscall Enable!\n");
+    } else {
+        printf("syscall Disable!\n");
+    }
 
     // Create topdir
     ret = mkdir(topdir.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
